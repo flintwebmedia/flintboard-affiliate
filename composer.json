@@ -1,0 +1,21 @@
+{
+    "name": "flintwebmedia/flintboard-affiliate",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Niels Steenman",
+            "email": "niels@flintmedia.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "flintwebmedia/flintboard-base": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "FlintWebmedia\\FlintboardBase\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
