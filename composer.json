@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "flintwebmedia/flintboard-base": "dev-master"
+        "flintwebmedia/flintboard-base": "dev-master",
+        "felixkiss/uniquewith-validator": "^3.0"
     },
     "autoload": {
         "psr-4": {
