@@ -16,9 +16,6 @@ class Product extends Model
 	*/
 
     protected $table = 'products';
-    //protected $primaryKey = 'id';
-    // public $timestamps = false;
-    // protected $guarded = ['id'];
 
     protected $fillable = [
         'product_id',
@@ -38,6 +35,11 @@ class Product extends Model
 	| FUNCTIONS
 	|--------------------------------------------------------------------------
 	*/
+
+    public function getImageHtml()
+    {
+        return '<img src="' . $this->image . '" style="max-width:80px"/>';
+    }
 
     /*
 	|--------------------------------------------------------------------------

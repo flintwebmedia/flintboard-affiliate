@@ -218,7 +218,7 @@ class ImportHelper {
 
         // Loop through all fields in feed product line
         foreach($product as $field => $attribute) {
-            // If the feed produt field is mapped
+            // If the feed product field is mapped
             if($attribute = $this->getAttributeFromMapping($field)) {
                 $attributeEAV = Attribute::where('name', $attribute)->first();
 
@@ -239,10 +239,11 @@ class ImportHelper {
         $product = new Product($newProductData);
 
         // If a product with same product_id exists, delete it. No updating in case mapping changed!
-        $oldProducts = Product::where('product_id', $newProductData['product_id'])->get();
-        if($oldProducts) {
-            foreach($oldProducts as $oldProduct) {
-                $oldProduct->delete();
+        if(!empty($newProductData['product_id'])) {
+            if($oldProducts = Product::where('product_id', $newProductData['product_id'])->get()) {
+                foreach($oldProducts as $oldProduct) {
+                    $oldProduct->delete();
+                }
             }
         }
 

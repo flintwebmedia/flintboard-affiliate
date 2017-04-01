@@ -36,10 +36,11 @@ class ProductCrudController extends CrudController
         $this->crud->addColumn([
             'name' => 'image', // The db column name
             'label' => "Image", // Table column heading
-            'type' => 'image'
+            'type' => 'model_function',
+            'function_name' => 'getImageHtml'
         ])->beforeColumn('name');
 
-        $this->crud->addButton('line', 'View', 'view', 'crud::buttons.view', 'end');
+        $this->crud->addButton('line', 'View', 'view', 'flintaffiliate::admin.buttons.view', 'end');
 
     }
 

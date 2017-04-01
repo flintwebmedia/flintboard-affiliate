@@ -124,7 +124,7 @@ class FeedCrudController extends CrudController
                     $newMappingResponse = $this->importHelper->addNewMapping($field, $attribute);
 
                     // If returned a Mapping model, save it to database, add to newMappings[]
-                    if(gettype($newMappingResponse) === 'object' && get_class($newMappingResponse) == 'FlintWebmedia\FlintboardBase\app\Models\Mapping') {
+                    if(gettype($newMappingResponse) === 'object' && is_a($newMappingResponse, 'FlintWebmedia\FlintboardAffiliate\app\Models\Mapping')) {
                         if($newMappingResponse->save())
                             $newMappings[] = $newMappingResponse;
 
