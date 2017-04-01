@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "FlintWebmedia\\FlintboardBase\\": "src"
+            "FlintWebmedia\\FlintboardAffiliate\\": "src"
         }
     },
     "minimum-stability": "dev"
