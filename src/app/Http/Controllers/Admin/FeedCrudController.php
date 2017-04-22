@@ -75,6 +75,8 @@ class FeedCrudController extends CrudController
     {
         $this->crud->hasAccessOrFail('delete');
 
+        // Delete all affiliated mappings and products
+        // TODO: Use events and listeners to streamline this process
         Mapping::where('feed_id', $id)->delete();
         Product::where('feed_id', $id)->delete();
 
