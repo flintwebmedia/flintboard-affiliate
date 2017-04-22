@@ -71,6 +71,16 @@ class FeedCrudController extends CrudController
         return $redirect_location;
 	}
 
+    public function destroy($id)
+    {
+        $this->crud->hasAccessOrFail('delete');
+
+        Mapping::where('feed_id', $id)->delete();
+        Product::where('feed_id', $id)->delete();
+
+        return Feed::destroy($id);
+    }
+
     /**
      * Import products from feed. Create form to insert feed mappings on attributes
      *
@@ -91,10 +101,13 @@ class FeedCrudController extends CrudController
 
         session(['importHelper' => $this->importHelper]);
 
+        $previousMappings = Mapping::where('feed_id', $feed_id)->get();
+
         if($this->importHelper->getFieldsFromFeed()) {
             return view('flintaffiliate::admin.import.fieldmapper',[
                 'importHelper' => $this->importHelper,
-                'crud' => $this->crud
+                'crud' => $this->crud,
+                'previousMappings' => $previousMappings
             ]);
         }
 

@@ -29,7 +29,7 @@
                 <div class="box-body row">
                     <div class="col-md-12">
                         @foreach($importHelper->fields as $field_index => $field)
-                            @include('flintaffiliate::admin.import.fields.field-attribute', ['field_index' => $field_index, 'field' => $field, 'importHelper' => $importHelper])
+                            @include('flintaffiliate::admin.import.fields.field-attribute', ['field_index' => $field_index, 'field' => $field, 'importHelper' => $importHelper, 'previousMappings' => $previousMappings])
                         @endforeach
                     </div>
                 </div><!-- /.box-body -->

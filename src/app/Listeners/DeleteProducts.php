@@ -2,8 +2,8 @@
 
 namespace FlintWebmedia\FlintboardAffiliate\app\Listeners;
 
-use App\Events\FeedDeleted;
-use App\Models\Product;
+use FlintWebmedia\FlintboardAffiliate\Events\FeedDeleted;
+use FlintWebmedia\FlintboardAffiliate\app\Models\Product;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

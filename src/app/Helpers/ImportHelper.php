@@ -120,7 +120,7 @@ class ImportHelper {
         $product_attributes = array_combine($product_attributes, $product_attributes);
 
         // Create attributes array. First index is null so skip this field, then add product attributes
-        $attributes = [null => 'Geen attribuut'];
+        $attributes = [null => ''];
         $attributes = array_merge($attributes, $product_attributes);
 
         // Get all administrator-made attributes
