@@ -4,6 +4,7 @@ namespace FlintWebmedia\FlintboardAffiliate\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -49,7 +50,34 @@ class Product extends Model
 
     public function values()
     {
-        return $this->hasMany('App\Models\Value');
+        return $this->hasMany('FlintWebmedia\FlintboardAffiliate\app\Models\Value');
+    }
+
+    /**
+     * This function returns any customized attributes of a given product
+     *
+     * @param $attribute name (case insensitive) of the required attribute
+     * @return bool/string if result found, return (string) value
+     */
+    public function value($attribute)
+    {
+        $this->attr = $attribute;
+
+        $value = DB::table('values')
+            ->join('attributes', function ($join) {
+                $join->on('attributes.id', '=', 'values.attribute_id')
+                    ->where('attributes.name', '=', $this->attr);
+            })
+            ->where('product_id', $this->id)
+            ->first();
+
+        // If a result was given, return the 'value' field
+        if (!empty($value) && $value) {
+            return (string)$value->value;
+
+        }
+
+        return false;
     }
 
     /*

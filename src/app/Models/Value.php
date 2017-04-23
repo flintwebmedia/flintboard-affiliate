@@ -15,13 +15,8 @@ class Value extends Model
 	|--------------------------------------------------------------------------
 	*/
 
-    //protected $table = 'values';
-    //protected $primaryKey = 'id';
     public $timestamps = false;
-    // protected $guarded = ['id'];
     protected $fillable = ['product_id', 'attribute_id', 'value'];
-    // protected $hidden = [];
-    // protected $dates = [];
 
     /*
 	|--------------------------------------------------------------------------
@@ -34,6 +29,16 @@ class Value extends Model
 	| RELATIONS
 	|--------------------------------------------------------------------------
 	*/
+
+    public function attribute()
+    {
+        return $this->belongsTo('FlintWebmedia\FlintboardAffiliate\app\Models\Attribute');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo('FlintWebmedia\FlintboardAffiliate\app\Models\Product', 'product_id', 'id');
+    }
 
     /*
 	|--------------------------------------------------------------------------
